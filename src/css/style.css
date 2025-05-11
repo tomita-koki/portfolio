@@ -731,13 +731,27 @@ li {
 }
 .m-media__inner {
   text-align: center;
+}
+.m-media__link {
+  text-align: center;
   display: flex;
   flex-direction: column;
   gap: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.m-media__link:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
 }
 .m-media__media {
   width: fit-content;
   margin: 0 auto;
+}
+.m-media__text {
+  color: var(--COLOR_FONT);
+  font-size: 1.5rem;
 }
 
 .m-media-reverse {

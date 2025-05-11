@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
         pagination: false,
         autoplay: true,
         interval: 0,
-        speed: 30000,
+        speed: 50000,
         easing: 'linear',
         waitForTransition: false,
         updateOnMove: true,
