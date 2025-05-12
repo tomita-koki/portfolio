@@ -1,108 +1,27 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <title>おみくじアプリ</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      padding: 50px;
-      background: #fff8e1;
-    }
-    .result {
-      font-size: 2rem;
-      margin: 20px 0;
-      height: 3rem;
-      overflow: hidden;
-      position: relative;
-    }
-    .result span {
-      display: block;
-      transition: transform 0.1s;
-    }
-    .spinning {
-      animation: spin 0.1s linear infinite;
-    }
-    @keyframes spin {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-100%); }
-    }
-    @keyframes bounce {
-      0% { transform: scale(0.3); opacity: 0; }
-      50% { transform: scale(1.2); }
-      70% { transform: scale(0.9); }
-      100% { transform: scale(1); opacity: 1; }
-    }
-    @keyframes shake {
-      0% { transform: translateX(0); }
-      25% { transform: translateX(-10px); }
-      50% { transform: translateX(10px); }
-      75% { transform: translateX(-10px); }
-      100% { transform: translateX(0); }
-    }
-    .show-result {
-      animation: bounce 0.8s ease-out, shake 0.5s ease-in-out 0.8s;
-    }
-    button {
-      font-size: 1.2rem;
-      padding: 10px 20px;
-      margin: 10px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    button:hover {
-      transform: scale(1.1);
-      background-color: #ffd54f;
-    }
-    button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: none;
-    }
-  </style>
+  <link rel="stylesheet" href="/css/style.css">
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <!-- Splide -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+  <!-- メインスクリプト -->
+  <script src="/js/main.js" defer></script>
 </head>
+
 <body>
-
-  <h1>✨おみくじ✨</h1>
-  <div class="result"><span>結果がここに出るよ</span></div>
-  <button id="draw">おみくじを引く！</button>
-
-  <script>
-    const results = ['🎉 大吉', '😊 中吉', '😌 小吉', '😢 凶', '😱 大凶'];
-    const resultDiv = document.querySelector('.result span');
-    const drawBtn = document.getElementById('draw');
-    let isSpinning = false;
-
-    function spinResults() {
-      let count = 0;
-      const maxSpins = 20;
-      drawBtn.disabled = true;
-      resultDiv.classList.remove('show-result');
-
-      const spinInterval = setInterval(() => {
-        const randomIndex = Math.floor(Math.random() * results.length);
-        resultDiv.textContent = results[randomIndex];
-        count++;
-        
-        if (count >= maxSpins) {
-          clearInterval(spinInterval);
-          isSpinning = false;
-          const finalIndex = Math.floor(Math.random() * results.length);
-          resultDiv.textContent = results[finalIndex];
-          resultDiv.classList.add('show-result');
-          drawBtn.disabled = false;
-        }
-      }, 100);
-    }
-
-    drawBtn.addEventListener('click', () => {
-      if (!isSpinning) {
-        isSpinning = true;
-        spinResults();
-      }
-    });
-  </script>
+  <div class="omikuji">
+    <h1>✨おみくじ✨</h1>
+    <div class="omikuji__result"><span>結果がここに出るよ</span></div>
+    <button id="draw" class="omikuji__btn">おみくじを引く！</button>
+  </div>
 
 </body>
+
 </html>

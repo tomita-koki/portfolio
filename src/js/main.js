@@ -401,3 +401,47 @@ document.addEventListener("DOMContentLoaded", function () {
     observer.observe(target);
   });
 });
+
+console.log("テスト");
+// -----------------------------------------
+// おみくじアプリ
+// -----------------------------------------
+document.addEventListener('DOMContentLoaded', () => {
+  const results = ['🎉 大吉', '😊 中吉', '😌 小吉', '😢 凶', '😱 大凶'];
+  const resultDiv = document.querySelector('.omikuji__result span');
+  const drawBtn = document.getElementById('draw');
+  let isSpinning = false;
+
+  if (!resultDiv || !drawBtn) return;
+
+  function spinResults() {
+    let count = 0;
+    const maxSpins = 20;
+    drawBtn.disabled = true;
+    resultDiv.classList.remove('show-result');
+    resultDiv.classList.add('spinning');
+
+    const spinInterval = setInterval(() => {
+      const randomIndex = Math.floor(Math.random() * results.length);
+      resultDiv.textContent = results[randomIndex];
+      count++;
+
+      if (count >= maxSpins) {
+        clearInterval(spinInterval);
+        isSpinning = false;
+        const finalIndex = Math.floor(Math.random() * results.length);
+        resultDiv.textContent = results[finalIndex];
+        resultDiv.classList.remove('spinning');
+        resultDiv.classList.add('show-result');
+        drawBtn.disabled = false;
+      }
+    }, 100);
+  }
+
+  drawBtn.addEventListener('click', () => {
+    if (!isSpinning) {
+      isSpinning = true;
+      spinResults();
+    }
+  });
+});

@@ -1,6 +1,7 @@
 @use './_base/' as *;
 @use './_foundation/' as *;
 @use './_mlc/' as *;
+@use './_omikuji.scss' as *;
 
 .body {
   font-weight: bold;
@@ -98,7 +99,7 @@
 }
 
 .section02 {
-  background-color:var(--COLOR_BOX);
+  background-color:var(--COLOR_BEIGE);
   width: 100vw;
   margin: 0 calc(50% - 50vw) 120px;
 
@@ -340,7 +341,7 @@
 }
 
 .footer {
-  background-color: var(--COLOR_BOX);
+  background-color: var(--COLOR_BEIGE);
   width: 100%;
   padding: 60px 30px;
 
