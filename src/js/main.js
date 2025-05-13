@@ -417,9 +417,10 @@ const omikuji = () => {
   const results = ['🎉 大吉', '😊 中吉', '😌 小吉', '😢 凶', '😱 大凶'];
   const resultDiv = document.querySelector('.omikuji__resultText');
   const drawBtn = document.getElementById('draw');
+  const template = document.querySelector('.template');
   let isSpinning = false;
 
-  if (!resultDiv || !drawBtn) {
+  if (!resultDiv || !drawBtn || !template) {
     return;
   }
 
@@ -429,6 +430,7 @@ const omikuji = () => {
     drawBtn.disabled = true;
     resultDiv.classList.remove('show-result');
     resultDiv.classList.add('spinning');
+    template.classList.add('active');
 
     const spinInterval = setInterval(() => {
       const randomIndex = Math.floor(Math.random() * results.length);
@@ -442,6 +444,7 @@ const omikuji = () => {
         resultDiv.textContent = results[finalIndex];
         resultDiv.classList.remove('spinning');
         resultDiv.classList.add('show-result');
+        template.classList.remove('active');
         drawBtn.disabled = false;
       }
     }, 100);
