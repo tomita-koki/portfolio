@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>おみくじアプリ</title>
   <link rel="stylesheet" href="/css/style.css">
   <!-- GSAP -->
@@ -15,13 +16,30 @@
   <script src="/js/main.js" defer></script>
 </head>
 
-<body>
+<body class="omikuji-page">
+  <!-- ヘッダー -->
+  <header class="header header--nonePc">
+    <div class="hamburger" id="hamburger">
+      <button class="hamburger__btn" id="hamburger__btn">
+        <span class="hamburger__line"></span>
+      </button>
+      <div class="hamburger__caption">メニュー</div>
+    </div>
+    <div class="header__inner">
+      <ul class="header__nav">
+        <li class="header__item"><a href="/" class="header__text">Top</a></li>
+        <li class="header__item"><a href="/#anc-01" class="header__text">Profile</a></li>
+        <li class="header__item"><a href="/#anc-02" class="header__text">これまでの実績</a></li>
+        <li class="header__item"><a href="/#anc-03" class="header__text">できること・スキル</a></li>
+        <li class="header__item"><a href="/#anc-04" class="header__text">少しでも気になった方はこちらから！</a></li>
+      </ul>
+    </div>
+    <div class="header__background"></div>
+  </header>
   <div class="omikuji">
     <h1>✨おみくじ✨</h1>
-    <div class="omikuji__result"><span>結果がここに出るよ</span></div>
+    <div class="omikuji__result"><span class="omikuji__resultText">結果がここに出るよ</span></div>
     <button id="draw" class="omikuji__btn">おみくじを引く！</button>
   </div>
-
 </body>
-
 </html>

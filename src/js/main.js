@@ -382,7 +382,6 @@ const Header = () => {
   });
 };
 
-// ヘッダーの初期化を実行
 Header();
 
 // -----------------------------------------
@@ -414,9 +413,9 @@ document.addEventListener("DOMContentLoaded", function () {
 // -----------------------------------------
 // おみくじアプリ
 // -----------------------------------------
-document.addEventListener('DOMContentLoaded', () => {
+const omikuji = () => {
   const results = ['🎉 大吉', '😊 中吉', '😌 小吉', '😢 凶', '😱 大凶'];
-  const resultDiv = document.querySelector('.omikuji__result span');
+  const resultDiv = document.querySelector('.omikuji__resultText');
   const drawBtn = document.getElementById('draw');
   let isSpinning = false;
 
@@ -454,4 +453,6 @@ document.addEventListener('DOMContentLoaded', () => {
       spinResults();
     }
   });
-});
+};
+
+omikuji();
