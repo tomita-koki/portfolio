@@ -307,74 +307,83 @@ document.addEventListener('DOMContentLoaded', function() {
 // -----------------------------------------
 // hedder
 // -----------------------------------------
+const Header = () => {
+  const header = document.querySelector('.header');
+  const hamburger = document.getElementById("hamburger");
+  const background = document.querySelector(".header__background");
+  const btn = document.getElementById("hamburger__btn");
+  const texts = document.querySelectorAll(".header__text");
+  const caption = document.querySelector(".hamburger__caption");
 
-const header = document.querySelector('.header');
-const hamburger = document.getElementById("hamburger");
-const background = document.querySelector(".header__background");
-// const nav = document.querySelector('.header__nav');
-const btn = document.getElementById("hamburger__btn");
-const texts = document.querySelectorAll(".header__text");
-const caption = document.querySelector(".hamburger__caption");
-const elements = [header, hamburger, background];
-const toggleTabIndex = (disable) => {
-  const focusableElements = document.querySelectorAll('a, button, input, textarea, select, [tabindex]');
-  focusableElements.forEach(el => {
+  // ヘッダーが存在する場合のみ実行
+  if (!header || !hamburger || !background || !btn || texts.length === 0 || !caption) {
+    return;
+  }
+
+  const elements = [header, hamburger, background];
+
+  // タブキー操作
+  const toggleTabIndex = (disable) => {
+    const focusableElements = document.querySelectorAll('a, button, input, textarea, select, [tabindex]');
+    focusableElements.forEach(el => {
       if (!hamburger.contains(el) && el !== btn && !el.classList.contains('header__text')) {
-          el.tabIndex = disable ? -1 : 0;
+        el.tabIndex = disable ? -1 : 0;
       }
-  });
-};
-btn.setAttribute("aria-expanded", "false");
-btn.setAttribute("aria-controls", "hamburger");
-btn.setAttribute("aria-label", "メニューを開く");
+    });
+  };
 
-btn.addEventListener("click", () => {
+  btn.setAttribute("aria-expanded", "false");
+  btn.setAttribute("aria-controls", "hamburger");
+  btn.setAttribute("aria-label", "メニューを開く");
+
+  // ハンバーガーボタンクリック時の処理
+  btn.addEventListener("click", () => {
     const active = hamburger.classList.contains('active');
     if(active) {
-        elements.forEach(el => el.classList.remove('active'));
-        caption.textContent = "メニュー";
-        btn.setAttribute("aria-expanded", "false");
-        btn.setAttribute("aria-label", "メニューを開く");
-        toggleTabIndex(false);
-
-        setTimeout(() => {
-            // nav.classList.remove('active');
-        }, 10);
+      elements.forEach(el => el.classList.remove('active'));
+      caption.textContent = "メニュー";
+      btn.setAttribute("aria-expanded", "false");
+      btn.setAttribute("aria-label", "メニューを開く");
+      toggleTabIndex(false);
     } else {
-        elements.forEach(el => el.classList.add('active'));
-        caption.textContent = "閉じる";
-        btn.setAttribute("aria-expanded", "true");
-        btn.setAttribute("aria-label", "メニューを閉じる");
-        toggleTabIndex(true);
+      elements.forEach(el => el.classList.add('active'));
+      caption.textContent = "閉じる";
+      btn.setAttribute("aria-expanded", "true");
+      btn.setAttribute("aria-label", "メニューを閉じる");
+      toggleTabIndex(true);
     }
-});
+  });
 
-texts.forEach(text => {
+  texts.forEach(text => {
     text.addEventListener("click", () => {
-        elements.forEach(el => el.classList.remove('active'));
-        caption.textContent = "メニュー";
-        btn.setAttribute("aria-expanded", "false");
-        btn.setAttribute("aria-label", "メニューを開く");
-        toggleTabIndex(false);
+      elements.forEach(el => el.classList.remove('active'));
+      caption.textContent = "メニュー";
+      btn.setAttribute("aria-expanded", "false");
+      btn.setAttribute("aria-label", "メニューを開く");
+      toggleTabIndex(false);
     });
-});
+  });
 
-background.addEventListener("click", () => {
-  const active = hamburger.classList.contains('active');
-  if(active) {
-    elements.forEach(el => el.classList.remove('active'));
-    caption.textContent = "メニュー";
-    btn.setAttribute("aria-expanded", "false");
-    btn.setAttribute("aria-label", "メニューを開く");
-    toggleTabIndex(false);
-  } else {
-    elements.forEach(el => el.classList.add('active'));
-    caption.textContent = "閉じる";
-    btn.setAttribute("aria-expanded", "true");
-    btn.setAttribute("aria-label", "メニューを閉じる");
-    toggleTabIndex(true);
-  }
-});
+  background.addEventListener("click", () => {
+    const active = hamburger.classList.contains('active');
+    if(active) {
+      elements.forEach(el => el.classList.remove('active'));
+      caption.textContent = "メニュー";
+      btn.setAttribute("aria-expanded", "false");
+      btn.setAttribute("aria-label", "メニューを開く");
+      toggleTabIndex(false);
+    } else {
+      elements.forEach(el => el.classList.add('active'));
+      caption.textContent = "閉じる";
+      btn.setAttribute("aria-expanded", "true");
+      btn.setAttribute("aria-label", "メニューを閉じる");
+      toggleTabIndex(true);
+    }
+  });
+};
+
+// ヘッダーの初期化を実行
+Header();
 
 // -----------------------------------------
 // js-scroll-fadeinup
@@ -402,7 +411,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-console.log("テスト");
 // -----------------------------------------
 // おみくじアプリ
 // -----------------------------------------
@@ -412,7 +420,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const drawBtn = document.getElementById('draw');
   let isSpinning = false;
 
-  if (!resultDiv || !drawBtn) return;
+  if (!resultDiv || !drawBtn) {
+    return;
+  }
 
   function spinResults() {
     let count = 0;
