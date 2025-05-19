@@ -2020,8 +2020,8 @@ li {
 }
 @media screen and (min-width: 768px) {
   .header__nav {
-    gap: 32px;
-    padding: 64px;
+    gap: 24px;
+    padding: 64px 220px;
   }
 }
 .header__item {
@@ -2032,6 +2032,11 @@ li {
 }
 .header__item:last-of-type {
   border-bottom: none;
+}
+@media screen and (min-width: 768px) {
+  .header__item {
+    padding-bottom: 24px;
+  }
 }
 .header__text {
   color: var(--COLOR_FONT);
