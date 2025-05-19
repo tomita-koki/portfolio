@@ -89,6 +89,14 @@
 .section01 {
   margin-bottom: 120px;
 
+  &:first-of-type {
+    margin-top: 120px;
+
+    @include media-query {
+      margin-top: 160px;
+    }
+  }
+
   @include media-query {
     margin-bottom: 160px;
   }
@@ -136,13 +144,13 @@
     display: none;
     width: 100%;
     
-    @include media-query {
-      border-radius: 10px;
-      box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .3);
-      text-align: center;
-      display: inline-block;
-      padding: 32px;
-    }
+    // @include media-query {
+    //   border-radius: 10px;
+    //   box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .3);
+    //   text-align: center;
+    //   display: inline-block;
+    //   padding: 32px;
+    // }
   }
 
   &__nav {
@@ -158,12 +166,12 @@
     transition: all .5s ease;
     padding: 20px;
 
-    @include media-query {
-      flex-direction: row;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 16px 24px;
-    }
+    // @include media-query {
+    //   flex-direction: row;
+    //   justify-content: center;
+    //   flex-wrap: wrap;
+    //   gap: 16px 24px;
+    // }
    }
 
   &__item {
@@ -176,11 +184,11 @@
       border-bottom: none;
     }
     
-    @include media-query {
-      padding-bottom: 0;
-      border-bottom: none;
-      width: fit-content;
-    }
+    // @include media-query {
+    //   padding-bottom: 0;
+    //   border-bottom: none;
+    //   width: fit-content;
+    // }
   }
 
   &__text {
@@ -254,9 +262,6 @@
   right: 30px;
   z-index: 101;
 
-  @include media-query {
-    display: none;
-  }  
 
   &__btn {
     position: relative;
