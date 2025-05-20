@@ -241,8 +241,8 @@
   z-index: 101;
 
   @include media-query {
-    top: 50px;
-    right: 300px;
+    top: 30px;
+    right: 10%;
   }
 
   &__btn {
