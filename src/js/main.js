@@ -157,27 +157,26 @@ window.addEventListener('DOMContentLoaded',function(){
 // -----------------------------------------
 // スライドショー
 // -----------------------------------------
-document.addEventListener('DOMContentLoaded', function() {
-    let splide = new Splide('.loop-splide', {
-        type: 'loop',
-        drag: 'free',
-        focus: 'center',
-        perPage: 3,
-        autoScroll: {
-            speed: 2,
-        },
-        arrows: false,
-        pagination: false,
-        autoplay: true,
-        interval: 0,
-        speed: 50000,
-        easing: 'linear',
-        waitForTransition: false,
-        updateOnMove: true,
-    });
-
-    splide.mount();
-});
+const options = {
+  type: "loop",
+  arrows: false,
+  pagination: false,
+  drag: "free",
+  perPage: 2,
+  gap: 20,
+  autoScroll: {
+    speed: 0.5,
+    pauseOnHover: true,
+  },
+  breakpoints: {
+    768: {
+      perPage: 1,
+      gap: 10,
+    },
+  },
+};
+const splide = new Splide(".splide", options);
+splide.mount(window.splide.Extensions);
 
 // -----------------------------------------
 // ローディング
