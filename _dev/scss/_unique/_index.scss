@@ -1,7 +1,8 @@
-@use './_base/' as *;
-@use './_foundation/' as *;
-@use './_mlc/' as *;
-@use './_omikuji.scss' as *;
+@use "./_base/" as *;
+@use "./_foundation/" as *;
+@use "./_mlc/" as *;
+@use "./_omikuji.scss" as *;
+@use "./_figma.scss" as *;
 
 .body {
   font-weight: bold;
@@ -18,7 +19,8 @@
     position: relative;
     overflow: hidden;
     width: 100%;
-    background: url("/images/img-dummy.png") center center / cover no-repeat;
+    background: url("/template/images/img-dummy.png") center center / cover
+      no-repeat;
   }
 
   &__content {
@@ -45,7 +47,7 @@
     min-width: 224px;
     width: 100%;
     box-shadow: 0 4px 0 var(--COLOR_BTN2);
-    transition: box-shadow ease .3s, transform ease .3s;
+    transition: box-shadow ease 0.3s, transform ease 0.3s;
     padding: 15px 40px;
 
     @include hover {
@@ -67,7 +69,8 @@
       display: inline-block;
       width: 32px;
       height: 32px;
-      background: url("/images/img-arrow.png") center center / cover no-repeat;
+      background: url("/template/images/img-arrow.png") center center / cover
+        no-repeat;
     }
   }
 
@@ -82,7 +85,7 @@
   max-width: 1280px;
 
   @include media-query {
-      padding: 0 120px;
+    padding: 0 120px;
   }
 }
 
@@ -107,7 +110,7 @@
 }
 
 .section02 {
-  background-color:var(--COLOR_BEIGE);
+  background-color: var(--COLOR_BEIGE);
   width: 100vw;
   margin: 0 calc(50% - 50vw) 120px;
 
@@ -153,18 +156,18 @@
     background-color: #ffffff;
     z-index: 10;
     width: 100%;
-    transition: all .5s ease;
+    transition: all 0.5s ease;
     padding: 20px;
 
     @include media-query {
       gap: 24px;
       padding: 64px 220px;
     }
-   }
+  }
 
   &__item {
     padding-bottom: 8px;
-    border-bottom: 3px #FDB0A3 dotted;
+    border-bottom: 3px #fdb0a3 dotted;
     text-align: center;
     width: 100%;
 
@@ -182,10 +185,10 @@
     font-weight: bold;
     position: relative;
     z-index: 0;
-    transition: all .3s ease;
+    transition: all 0.3s ease;
 
     @include hover {
-      color: #FDB0A3;
+      color: #fdb0a3;
 
       &::after {
         content: "";
@@ -196,7 +199,7 @@
         display: inline-block;
         width: 32px;
         height: 32px;
-        background-color: #FEF4E7;
+        background-color: #fef4e7;
         border-radius: 50%;
         z-index: -1;
       }
@@ -225,10 +228,10 @@
     left: 0;
     z-index: 100;
 
-      @include media-query {
-        top: 159px;
-      }
-   }
+    @include media-query {
+      top: 159px;
+    }
+  }
 }
 
 .hamburger {
@@ -254,7 +257,7 @@
       width: 60px;
       height: 60px;
     }
-  
+
     &::before,
     &::after {
       content: "";
@@ -266,17 +269,17 @@
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      transition: transform .3s ease;
+      transition: transform 0.3s ease;
 
       @include media-query {
         width: 32px;
       }
     }
-  
+
     &::before {
       top: 30%;
     }
-  
+
     &::after {
       top: 65%;
     }
@@ -309,34 +312,34 @@
 }
 
 .hamburger.active {
-  .hamburger__btn {  
-      background-color: #fff;
+  .hamburger__btn {
+    background-color: #fff;
 
-      &::before {
-        transform:rotate(45deg);
-        top: 46%;
-        left: 30%;
+    &::before {
+      transform: rotate(45deg);
+      top: 46%;
+      left: 30%;
 
-        @include media-query {
-          top: 56%;
-          left: 25%;
-        }
+      @include media-query {
+        top: 56%;
+        left: 25%;
       }
+    }
 
-      &::after {
-        transform:rotate(-45deg);
-        top: 46%;
-        left: 30%;
+    &::after {
+      transform: rotate(-45deg);
+      top: 46%;
+      left: 30%;
 
-        @include media-query {
-          top: 56%;
-          left: 25%;
-        }
+      @include media-query {
+        top: 56%;
+        left: 25%;
       }
+    }
 
-      & .hamburger__line {
-        display: none;
-      }
+    & .hamburger__line {
+      display: none;
+    }
   }
 }
 
