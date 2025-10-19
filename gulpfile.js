@@ -7,7 +7,7 @@ const browserSync = require("browser-sync").create();
 function cssSass() {
   return src("_dev/scss/**/*.scss")
     .pipe(sass().on("error", sass.logError))
-    .pipe(dest("src/portfolio/css"))
+    .pipe(dest("src/template/css"))
     .pipe(browserSync.stream());
 }
 
